@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.conduit.taphealthngo.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -50,7 +52,8 @@ public class PatientMedicalHistoryListAdapter extends RecyclerView.Adapter<Patie
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
-
+        
     }
+
 
 }

@@ -1,24 +1,26 @@
 package com.conduit.taphealthngo.patient;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by owencortes on 8/27/16.
  */
+@IgnoreExtraProperties
 public class PatientData {
 
+    public static final String HARDCODED_PATIENT_ID = "0000001";
+
     private String name;
-    private int age;
+    private String age;
     private String birthdate;
     private String gender;
-
-
     private String sssNumber;
     private String maritalStatus;
     private String address;
     private String philhealthNumber;
-
     private String hmoAffiliation;
 
     public String getName() {
@@ -29,11 +31,11 @@ public class PatientData {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

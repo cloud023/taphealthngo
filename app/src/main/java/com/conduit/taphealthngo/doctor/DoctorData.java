@@ -1,28 +1,35 @@
 package com.conduit.taphealthngo.doctor;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by owencortes on 8/27/16.
  */
+@IgnoreExtraProperties
 public class DoctorData {
 
-    private String doctorName;
+    private String name;
     private boolean isAvailable;
 
-    public DoctorData(String doctorName, boolean isAvailable){
-        this.doctorName = doctorName;
+
+    public DoctorData(){
+
+    }
+
+    public DoctorData(String name, boolean isAvailable){
+        this.name = name;
         this.isAvailable = isAvailable;
     }
 
-
-    public String getDoctorName() {
-        return doctorName;
+    public String getName() {
+        return name;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public boolean isAvailable() {

@@ -35,7 +35,7 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTxtDoctorName.setText(doctors.get(position).getDoctorName());
+        holder.mTxtDoctorName.setText(doctors.get(position).getName());
         holder.mBtnCallDoctor.setOnClickListener(this);
     }
 

@@ -6,11 +6,19 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.conduit.taphealthngo.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +26,7 @@ import butterknife.ButterKnife;
 /**
  * Created by owencortes on 8/27/16.
  */
-public class PatientMedicalHistoryFragment extends Fragment {
+public class PatientMedicalHistoryFragment extends Fragment implements ValueEventListener {
 
     @BindView(R.id.recycler_medical_history_list) RecyclerView mRecyclerMedicalHistory;
 
@@ -31,7 +39,7 @@ public class PatientMedicalHistoryFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAdapter = new PatientMedicalHistoryListAdapter(PatientData.getPatientMedicalHistory());
+        PatientFirebaseService.getPatientMedicalHistoryReference(PatientData.HARDCODED_PATIENT_ID).addValueEventListener(this);
 
     }
 
@@ -45,9 +53,28 @@ public class PatientMedicalHistoryFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerMedicalHistory.setLayoutManager(mLayoutManager);
         mRecyclerMedicalHistory.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerMedicalHistory.setAdapter(mAdapter);
 
         return view;
     }
 
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+
+        List<String> histories = new ArrayList<>();
+        for(DataSnapshot medicalHistory : dataSnapshot.getChildren()){
+            if(medicalHistory != null){
+                String medicalHistoryDesc = medicalHistory.child("description").getValue().toString();
+                histories.add(medicalHistoryDesc);
+            }
+        }
+
+        mAdapter = new PatientMedicalHistoryListAdapter(histories);
+        mRecyclerMedicalHistory.setAdapter(mAdapter);
+
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+
+    }
 }

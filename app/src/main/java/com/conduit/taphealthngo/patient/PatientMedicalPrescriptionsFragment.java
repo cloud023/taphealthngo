@@ -11,6 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.conduit.taphealthngo.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,9 +24,10 @@ import butterknife.ButterKnife;
 /**
  * Created by owencortes on 8/27/16.
  */
-public class PatientMedicalPrescriptionsFragment extends Fragment {
+public class PatientMedicalPrescriptionsFragment extends Fragment implements ValueEventListener {
 
     @BindView(R.id.recycler_medical_prescription_list) RecyclerView mRecyclerMedicalPrescription;
+
     private PatientMedicalHistoryListAdapter mAdapter;
 
     public static PatientMedicalPrescriptionsFragment newInstance(){
@@ -31,8 +38,7 @@ public class PatientMedicalPrescriptionsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAdapter = new PatientMedicalHistoryListAdapter(PatientData.getPatientMedicalPrescriptions());
-        
+        PatientFirebaseService.getPatientPrescriptionsRefererence(PatientData.HARDCODED_PATIENT_ID).addValueEventListener(this);
     }
 
     @Nullable
@@ -43,10 +49,32 @@ public class PatientMedicalPrescriptionsFragment extends Fragment {
         ButterKnife.bind(this,view);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+
         mRecyclerMedicalPrescription.setLayoutManager(mLayoutManager);
         mRecyclerMedicalPrescription.setItemAnimator(new DefaultItemAnimator());
         mRecyclerMedicalPrescription.setAdapter(mAdapter);
 
         return view;
+
+    }
+
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+
+        List<String> prescriptions = new ArrayList<>();
+        for(DataSnapshot medicalHistory : dataSnapshot.getChildren()){
+            if(medicalHistory != null){
+                String medicalPrescription = medicalHistory.child("description").getValue().toString();
+                prescriptions.add(medicalPrescription);
+            }
+        }
+
+        mAdapter = new PatientMedicalHistoryListAdapter(prescriptions);
+        mRecyclerMedicalPrescription.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
+
     }
 }
