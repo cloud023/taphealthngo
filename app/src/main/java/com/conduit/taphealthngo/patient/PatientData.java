@@ -93,13 +93,22 @@ public class PatientData {
         this.hmoAffiliation = hmoAffiliation;
     }
 
-    public List<String> getPatientMedicalHistory(){
+    public static List<String> getPatientMedicalHistory(){
 
         List<String> medicalHistory = new ArrayList<>();
         medicalHistory.add("Has asthma and allergic to crabs");
         medicalHistory.add("Recently operated on the heart");
         medicalHistory.add("Diagnose with allergy in the rice");
 
+        return medicalHistory;
+
+    }
+
+    public static List<String> getPatientMedicalPrescriptions(){
+
+        List<String> medicalHistory = new ArrayList<>();
+        medicalHistory.add("Please take alaxan 3 times a day");
+        medicalHistory.add("Drink 3 bottles of water 8 times a day");
         return medicalHistory;
 
     }

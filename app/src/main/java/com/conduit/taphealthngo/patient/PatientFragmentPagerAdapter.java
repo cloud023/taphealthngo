@@ -16,7 +16,7 @@ public class PatientFragmentPagerAdapter extends FragmentStatePagerAdapter {
     private Fragment patientFragmentTabs[] = new Fragment[] {
             PatientBasicInfoFragment.newInstance(),
             PatientMedicalHistoryFragment.newInstance() ,
-            PatientBasicInfoFragment.newInstance() };
+            PatientMedicalPrescriptionsFragment.newInstance() };
 
     private Context context;
 

@@ -18,36 +18,35 @@ import butterknife.ButterKnife;
 /**
  * Created by owencortes on 8/27/16.
  */
-public class PatientMedicalHistoryFragment extends Fragment {
+public class PatientMedicalPrescriptionsFragment extends Fragment {
 
-    @BindView(R.id.recycler_medical_history_list) RecyclerView mRecyclerMedicalHistory;
-
+    @BindView(R.id.recycler_medical_prescription_list) RecyclerView mRecyclerMedicalPrescription;
     private PatientMedicalHistoryListAdapter mAdapter;
-    public static PatientMedicalHistoryFragment newInstance(){
-        return new PatientMedicalHistoryFragment();
+
+    public static PatientMedicalPrescriptionsFragment newInstance(){
+        return new PatientMedicalPrescriptionsFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAdapter = new PatientMedicalHistoryListAdapter(PatientData.getPatientMedicalHistory());
-
+        mAdapter = new PatientMedicalHistoryListAdapter(PatientData.getPatientMedicalPrescriptions());
+        
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.patient_medical_history,container,false);
+        View view = inflater.inflate(R.layout.patient_medical_prescription,container,false);
         ButterKnife.bind(this,view);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerMedicalHistory.setLayoutManager(mLayoutManager);
-        mRecyclerMedicalHistory.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerMedicalHistory.setAdapter(mAdapter);
+        mRecyclerMedicalPrescription.setLayoutManager(mLayoutManager);
+        mRecyclerMedicalPrescription.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerMedicalPrescription.setAdapter(mAdapter);
 
         return view;
     }
-
 }
