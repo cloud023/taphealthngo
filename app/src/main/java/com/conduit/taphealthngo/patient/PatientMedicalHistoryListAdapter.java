@@ -52,8 +52,6 @@ public class PatientMedicalHistoryListAdapter extends RecyclerView.Adapter<Patie
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
-        
     }
-
 
 }

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.conduit.taphealthngo.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,9 +36,15 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mTxtDoctorName.setText(doctors.get(position).getName());
-        holder.mBtnCallDoctor.setOnClickListener(this);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doctors.get(position).onDoctorSelectedListener.onSelect(doctors.get(position));
+            }
+        });
     }
 
     @Override
@@ -54,8 +62,6 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
         @BindView(R.id.txt_doctor_fragment_list_item_name)
         TextView mTxtDoctorName;
 
-        @BindView(R.id.btn_doctor_fragment_item_call)
-        Button mBtnCallDoctor;
 
         public ViewHolder(View itemView) {
             super(itemView);

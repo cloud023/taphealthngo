@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_doctor_invites_patient_name"
+        android:text="Jayson Duran"
+        android:textSize="@dimen/subheader_text_size"
+        android:layout_width="match_parent"
+        android:textColor="@color/colorHeadline"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txt_doctor_invites_patient_msg"
+        android:text="Hi Doctor, please check this patient right away"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_doctor_invites_patient_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btn_patient_invites_accept"
+        android:text="Accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_doctor_invites_patient_msg"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/btn_patient_invite_view"
+        android:text="View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/btn_patient_invites_accept"
+        android:layout_toLeftOf="@id/btn_patient_invites_accept"
+        android:layout_toStartOf="@id/btn_patient_invites_accept" />
+
+</RelativeLayout>

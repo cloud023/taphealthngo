@@ -1,5 +1,8 @@
 package com.conduit.taphealthngo.doctor;
 
+import android.view.View;
+
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.ArrayList;
@@ -13,7 +16,15 @@ public class DoctorData {
 
     private String name;
     private boolean isAvailable;
+    private String doctorId;
 
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
 
     public DoctorData(){
 
@@ -49,4 +60,8 @@ public class DoctorData {
         doctors.add(new DoctorData("Dr. Jaysel Duran",false));
         return doctors;
     }
+
+    @Exclude
+    public OnDoctorSelectedListener onDoctorSelectedListener;
+
 }
