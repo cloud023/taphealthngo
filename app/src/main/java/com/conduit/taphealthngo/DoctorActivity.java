@@ -74,6 +74,7 @@ public class DoctorActivity extends AppCompatActivity implements ValueEventListe
 
     @Override
     public void onAcceptInvite(DoctorInviteData doctorInviteData,int recordPosition) {
+
         final ProgressDialog progressDialog = ProgressDialog.show(DoctorActivity.this,
                 "Accept Invite","Accepting invite please wait...");
 
@@ -84,7 +85,6 @@ public class DoctorActivity extends AppCompatActivity implements ValueEventListe
                         if(progressDialog != null && progressDialog.isShowing()){
                             progressDialog.dismiss();
                         }
-
                     }
                 });
     }

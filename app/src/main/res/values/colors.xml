@@ -7,4 +7,7 @@
     <color name="colorHeadline">#424242</color>
     <color name="colorSubHeading">#9E9E9E</color>
 
+    <color name="inviteStatusAccepted">#689F38</color>
+    <color name="inviteStatusPending">#E65100</color>
+
 </resources>

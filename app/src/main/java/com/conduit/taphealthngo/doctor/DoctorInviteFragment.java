@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 /**
  * Created by jayson duran on 8/27/16.
  */
-public class DoctorFragment extends DialogFragment implements ValueEventListener,OnDoctorSelectedListener {
+public class DoctorInviteFragment extends DialogFragment implements ValueEventListener,OnDoctorSelectedListener {
 
     @BindView(R.id.lst_doctor_fragment_list)
     RecyclerView mLstDoctors;
@@ -76,7 +76,6 @@ public class DoctorFragment extends DialogFragment implements ValueEventListener
             doctorData.setDoctorId(doctor.getKey());
             doctorData.onDoctorSelectedListener = this;
             doctors.add(doctorData);
-
         }
 
         doctorListAdapter = new DoctorListAdapter(doctors);
@@ -104,8 +103,11 @@ public class DoctorFragment extends DialogFragment implements ValueEventListener
                         doctorInviteData.setDoctorId(doctorData.getDoctorId());
                         doctorInviteData.setInviteType("msg");
                         doctorInviteData.setMessage("Invitation from patient");
+                        doctorInviteData.setDoctorName(doctorData.getName());
                         doctorInviteData.setPatientId(PatientData.HARDCODED_PATIENT_ID);
-                        
+                        doctorInviteData.setStatus(DoctorInviteData.INVITE_STATUS_PENDING);
+                        doctorInviteData.setPatientName("Jayson Duran");
+
                         PatientFirebaseService.getDoctorInvitesReference(PatientData.HARDCODED_PATIENT_ID)
                                 .push()
                                 .setValue(doctorInviteData, new DatabaseReference.CompletionListener() {

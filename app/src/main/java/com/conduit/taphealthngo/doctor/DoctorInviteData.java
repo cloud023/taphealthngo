@@ -1,10 +1,12 @@
 package com.conduit.taphealthngo.doctor;
 
 import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 
 /**
  * Created by owencortes on 8/28/16.
  */
+@IgnoreExtraProperties
 public class DoctorInviteData {
 
     @Exclude
@@ -22,6 +24,16 @@ public class DoctorInviteData {
     private String firebaseKey;
 
     private String status;
+
+    private String doctorName;
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
 
     public String getStatus() {
         return status;
