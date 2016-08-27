@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_patient_img"
+        android:src="@drawable/profile_patient_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Jayson Duran"
+        android:textColor="@color/colorHeadline"
+        android:textSize="@dimen/headline_text_size"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/img_patient_img"
+        android:layout_toEndOf="@+id/img_patient_img"
+        android:id="@+id/patient_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="16yrs Old"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_name"
+        android:fontFamily="sans-serif"
+        android:layout_toRightOf="@+id/img_patient_img"
+        android:layout_toEndOf="@+id/img_patient_img"
+        android:id="@+id/patientYearsOld" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Male"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/patientYearsOld"
+        android:layout_toRightOf="@+id/img_patient_img"
+        android:layout_toEndOf="@+id/img_patient_img"
+        android:id="@+id/patientGender" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Call Doctor"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_patient_img"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button" />
+
+    <TextView
+        android:id="@+id/txt_patient_birthdate"
+        android:text="Birthdate: November 25, 1992"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/txt_patient_sss_number"
+        android:text="SSS #: 39485934"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_patient_birthdate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/txt_marital_status"
+        android:text="Status : Single"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_patient_sss_number"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/txt_philhealth_number"
+        android:text="Philhealth # : 39894734"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_marital_status"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/txt_patient_address"
+        android:text="Address : Blk 3 Lot 4 Centennial 2 San Pedro St. Pinalad Pasig City"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_philhealth_number"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button" />
+
+    <TextView
+        android:id="@+id/txt_patient_hmo_affiliation"
+        android:text="HMO: Medicard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_patient_address"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
