@@ -1,8 +1,10 @@
 package com.conduit.taphealthngo.doctor;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -53,6 +55,8 @@ public class DoctorInviteFragment extends DialogFragment implements ValueEventLi
         DoctorFirebaseService.getAllDoctorsReference().addValueEventListener(this);
     }
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,6 +66,8 @@ public class DoctorInviteFragment extends DialogFragment implements ValueEventLi
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mLstDoctors.setLayoutManager(mLayoutManager);
         mLstDoctors.setItemAnimator(new DefaultItemAnimator());
+
+        getDialog().setTitle("Doctors Available");
 
         return view;
     }

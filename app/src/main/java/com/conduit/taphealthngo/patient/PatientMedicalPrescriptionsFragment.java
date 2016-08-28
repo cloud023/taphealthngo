@@ -69,7 +69,7 @@ public class PatientMedicalPrescriptionsFragment extends Fragment implements Val
             }
         }
 
-        mAdapter = new PatientMedicalHistoryListAdapter(prescriptions);
+        mAdapter = new PatientMedicalHistoryListAdapter(prescriptions,PatientMedicalHistoryListAdapter.MEDICAL_PRESCRIPTION_TYPE);
         mRecyclerMedicalPrescription.setAdapter(mAdapter);
     }
 

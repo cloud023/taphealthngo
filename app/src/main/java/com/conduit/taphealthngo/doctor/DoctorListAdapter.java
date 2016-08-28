@@ -45,6 +45,7 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
                 doctors.get(position).onDoctorSelectedListener.onSelect(doctors.get(position));
             }
         });
+
     }
 
     @Override
@@ -61,7 +62,6 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.Vi
 
         @BindView(R.id.txt_doctor_fragment_list_item_name)
         TextView mTxtDoctorName;
-
 
         public ViewHolder(View itemView) {
             super(itemView);

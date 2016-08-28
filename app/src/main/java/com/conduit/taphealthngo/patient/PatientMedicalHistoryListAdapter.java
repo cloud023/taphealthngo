@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.conduit.taphealthngo.R;
@@ -21,9 +22,13 @@ import butterknife.ButterKnife;
 public class PatientMedicalHistoryListAdapter extends RecyclerView.Adapter<PatientMedicalHistoryListAdapter.ViewHolder>{
 
     public List<String> medicalHistory;
+    public static final String MEDICAL_HISTORY_TYPE = "history";
+    public static final String MEDICAL_PRESCRIPTION_TYPE = "prescription";
+    String medicalType = "";
 
-    public PatientMedicalHistoryListAdapter(List<String> medicalHistory){
+    public PatientMedicalHistoryListAdapter(List<String> medicalHistory,String medicalType){
         this.medicalHistory = medicalHistory;
+        this.medicalType = medicalType;
     }
 
     @Override
@@ -37,6 +42,13 @@ public class PatientMedicalHistoryListAdapter extends RecyclerView.Adapter<Patie
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.txtMedicalHistoryDesc.setText(medicalHistory.get(position));
+        
+        if(medicalType.equals(MEDICAL_HISTORY_TYPE)){
+            holder.imgMedIcon.setImageResource(R.drawable.report);
+        } else{
+            holder.imgMedIcon.setImageResource(R.drawable.pills);
+        }
+
     }
 
     @Override
@@ -48,6 +60,10 @@ public class PatientMedicalHistoryListAdapter extends RecyclerView.Adapter<Patie
 
         @BindView(R.id.txt_medical_history_list_item_desc)
         TextView txtMedicalHistoryDesc;
+
+        @BindView(R.id.img_med_icon)
+        ImageView imgMedIcon;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);

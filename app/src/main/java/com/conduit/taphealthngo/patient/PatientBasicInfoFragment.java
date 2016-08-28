@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.conduit.taphealthngo.R;
@@ -52,12 +54,23 @@ public class PatientBasicInfoFragment extends Fragment implements ValueEventList
     @BindView(R.id.txt_patient_invite_status)
     TextView mTxtPatientInviteStatus;
 
+    @BindView(R.id.layout_patient_basic_info)
+    RelativeLayout mLayoutPatientInfo;
+
+    @BindView(R.id.txt_philhealth_number)
+    TextView mTxtPhilhealth;
+
+    @BindView(R.id.txt_marital_status)
+    TextView mTxtMaritalStatus;
+
+
     private ProgressDialog mProgressDialog;
 
+    private int STATUS_COLOR_PENDING;
+    private int STATUS_COLOR_ACCEPTED;
+
     public static PatientBasicInfoFragment newInstance() {
-
         PatientBasicInfoFragment fragment = new PatientBasicInfoFragment();
-
         return fragment;
     }
 
@@ -67,13 +80,18 @@ public class PatientBasicInfoFragment extends Fragment implements ValueEventList
         View view = inflater.inflate(R.layout.patient_basic_info_layout, container, false);
         ButterKnife.bind(this, view);
 
+        STATUS_COLOR_ACCEPTED = ContextCompat.getColor(getActivity(), R.color.inviteStatusAccepted);
+        STATUS_COLOR_PENDING = ContextCompat.getColor(getActivity(), R.color.inviteStatusPending);
+
         mProgressDialog = ProgressDialog.show(getContext(), "Patient Information", "Getting Patient Info please wait...",
                 true,
                 true);
 
         PatientFirebaseService.getPatientInfoReference(PatientData.HARDCODED_PATIENT_ID).addValueEventListener(this);
 
+
         DoctorFirebaseService.getAllPatientInvitesReference().addValueEventListener(patientInviteStatusListener);
+
         return view;
     }
 
@@ -88,12 +106,13 @@ public class PatientBasicInfoFragment extends Fragment implements ValueEventList
 
                     if (doctorInviteData.getStatus().equals(DoctorInviteData.INVITE_STATUS_ACCCEPTED)) {
                         mTxtPatientInviteStatus.setText("Care of " + doctorInviteData.getDoctorName());
-                        mTxtPatientInviteStatus.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.inviteStatusAccepted));
+                        mTxtPatientInviteStatus.setBackgroundColor(STATUS_COLOR_ACCEPTED);
                         mTxtPatientInviteStatus.setVisibility(View.VISIBLE);
                     } else if (doctorInviteData.getStatus().equals(DoctorInviteData.INVITE_STATUS_PENDING)) {
                         mTxtPatientInviteStatus.setText("Pending Request for " + doctorInviteData.getDoctorName());
-                        mTxtPatientInviteStatus.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.inviteStatusPending));
+                        mTxtPatientInviteStatus.setBackgroundColor(STATUS_COLOR_PENDING);
                         mTxtPatientInviteStatus.setVisibility(View.VISIBLE);
+
                     }
                 }
             }
@@ -117,18 +136,25 @@ public class PatientBasicInfoFragment extends Fragment implements ValueEventList
 
         PatientData patientData = dataSnapshot.getValue(PatientData.class);
         if (patientData != null) {
-            mTxtPatientAddress.setText(patientData.getAddress());
+
+            mTxtPatientAddress.setText(Html.fromHtml(patientData.getAddress()));
             mTxtPatientAge.setText(String.valueOf(patientData.getAge()));
-            mTxtPatientBirthDate.setText(patientData.getBirthdate());
+            mTxtPatientBirthDate.setText(Html.fromHtml(patientData.getBirthdate()));
             mTxtPatientGender.setText(patientData.getGender());
-            mTxtPatientHMOAffiliation.setText(patientData.getHmoAffiliation());
+            mTxtPatientHMOAffiliation.setText(Html.fromHtml(patientData.getHmoAffiliation()));
             mTxtPatientName.setText(patientData.getName());
-            mTxtPatientSSSNumbr.setText(patientData.getSssNumber());
+            mTxtPatientSSSNumbr.setText(Html.fromHtml(patientData.getSssNumber()));
+            mTxtPhilhealth.setText(Html.fromHtml(patientData.getPhilhealthNumber()));
+            mTxtMaritalStatus.setText(Html.fromHtml(patientData.getMaritalStatus()));
+
         }
 
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+
+        mLayoutPatientInfo.setVisibility(View.VISIBLE);
+
 
     }
 

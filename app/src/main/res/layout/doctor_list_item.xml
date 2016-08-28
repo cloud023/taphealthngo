@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="16dp"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_doctor_list_item_icon"
+        android:src="@drawable/doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/txt_doctor_fragment_list_item_name"
         android:layout_width="wrap_content"
         android:text="Dr. Juan Tamad"
-        android:padding="16dp"
+        android:padding="8dp"
         android:textSize="@dimen/subheader_text_size"
         android:textColor="@color/colorHeadline"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/img_doctor_list_item_icon"
+        android:layout_toEndOf="@+id/img_doctor_list_item_icon" />
 
 </RelativeLayout>

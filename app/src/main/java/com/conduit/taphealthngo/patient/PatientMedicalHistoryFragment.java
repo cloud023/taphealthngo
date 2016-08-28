@@ -31,6 +31,7 @@ public class PatientMedicalHistoryFragment extends Fragment implements ValueEven
     @BindView(R.id.recycler_medical_history_list) RecyclerView mRecyclerMedicalHistory;
 
     private PatientMedicalHistoryListAdapter mAdapter;
+
     public static PatientMedicalHistoryFragment newInstance(){
         return new PatientMedicalHistoryFragment();
     }
@@ -68,7 +69,7 @@ public class PatientMedicalHistoryFragment extends Fragment implements ValueEven
             }
         }
 
-        mAdapter = new PatientMedicalHistoryListAdapter(histories);
+        mAdapter = new PatientMedicalHistoryListAdapter(histories,PatientMedicalHistoryListAdapter.MEDICAL_HISTORY_TYPE);
         mRecyclerMedicalHistory.setAdapter(mAdapter);
 
     }

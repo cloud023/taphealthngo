@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ActionBarTabText.Rosenormal" parent="@android:style/Widget.Holo.Light.ActionBar.TabText">
+        <item name="android:textColor">#f00</item>
+    </style>
+
+
 </resources>

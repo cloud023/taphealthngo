@@ -1,120 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_patient_basic_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone">
 
     <TextView
         android:id="@+id/txt_patient_invite_status"
-        android:gravity="center_horizontal"
-        android:text="Care of Dr. Juan Dela Cruz"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:padding="18dp"
-        android:visibility="gone"
+        android:text="Care of Dr. Juan Dela Cruz"
         android:textColor="@android:color/white"
-        android:layout_height="wrap_content" />
+        android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/img_patient_img"
+    <RelativeLayout
+        android:id="@+id/layout_basic_profile_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/txt_patient_invite_status"
-        android:src="@drawable/profile_patient_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:background="#43A047"
+        android:padding="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Jayson Duran"
-        android:textColor="@color/colorHeadline"
-        android:textSize="@dimen/headline_text_size"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:id="@+id/txt_patient_name"
-        android:layout_below="@+id/txt_patient_invite_status"
-        android:layout_toRightOf="@+id/img_patient_img"
-        android:layout_toEndOf="@+id/img_patient_img" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_patient_img"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:padding="16dp"
+            android:src="@drawable/bruce_wayne_profile"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="16yrs Old"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_patient_name"
-        android:fontFamily="sans-serif"
-        android:layout_toRightOf="@+id/img_patient_img"
-        android:layout_toEndOf="@+id/img_patient_img"
-        android:id="@+id/txt_patient_age" />
+        <TextView
+            android:id="@+id/txt_patient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/img_patient_img"
+            android:layout_toRightOf="@+id/img_patient_img"
+            android:fontFamily="sans-serif"
+            android:text="Jayson Duran"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/headline_text_size" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Male"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:layout_below="@+id/txt_patient_age"
-        android:layout_toRightOf="@+id/img_patient_img"
-        android:layout_toEndOf="@+id/img_patient_img"
-        android:id="@+id/txt_patient_gender" />
+        <TextView
+            android:id="@+id/txt_patient_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_patient_name"
+            android:layout_toEndOf="@+id/img_patient_img"
+            android:layout_toRightOf="@+id/img_patient_img"
+            android:fontFamily="sans-serif"
+            android:text="16yrs Old"
+            android:textColor="@android:color/white" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:text="Call Doctor"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_patient_img"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/btn_patient_call_doctor" />
+        <TextView
+            android:id="@+id/txt_patient_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_patient_age"
+            android:layout_toEndOf="@+id/img_patient_img"
+            android:layout_toRightOf="@+id/img_patient_img"
+            android:fontFamily="sans-serif"
+            android:text="Male"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_patient_call_doctor"
+            android:layout_width="wrap_content"
+            android:text="Contact Doctor"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right|end"
+            android:src="@drawable/doctor"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:background="@android:color/transparent"
+            android:layout_below="@id/txt_patient_gender" />
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/txt_patient_birthdate"
-        android:text="Birthdate: November 25, 1992"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_patient_call_doctor"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:padding="4dp"
+        android:textSize="16sp"
+        android:layout_below="@+id/layout_basic_profile_wrapper"
+        android:text="Birthdate: November 25, 1992" />
 
     <TextView
         android:id="@+id/txt_patient_sss_number"
-        android:text="SSS #: 39485934"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_patient_birthdate"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:padding="4dp"
+        android:textSize="16sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt_patient_birthdate"
+        android:text="SSS #: 39485934" />
 
     <TextView
         android:id="@+id/txt_marital_status"
-        android:text="Status : Single"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_patient_sss_number"
+        android:padding="4dp"
+        android:textSize="16sp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt_patient_sss_number"
+        android:text="Status : Single" />
 
     <TextView
         android:id="@+id/txt_philhealth_number"
-        android:text="Philhealth # : 39894734"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_marital_status"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:padding="4dp"
+        android:textSize="16sp"
+        android:layout_below="@+id/txt_marital_status"
+        android:text="Philhealth # : 39894734" />
 
     <TextView
         android:id="@+id/txt_patient_address"
-        android:text="Address : Blk 3 Lot 4 Centennial 2 San Pedro St. Pinalad Pasig City"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="16sp"
         android:layout_below="@+id/txt_philhealth_number"
-        android:layout_alignRight="@+id/btn_patient_call_doctor"
-        android:layout_alignEnd="@+id/btn_patient_call_doctor" />
+
+        android:text="Address : Blk 3 Lot 4 Centennial 2 San Pedro St. Pinalad Pasig City" />
 
     <TextView
         android:id="@+id/txt_patient_hmo_affiliation"
-        android:text="HMO: Medicard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_patient_address"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:padding="4dp"
+        android:textSize="16sp"
+        android:layout_below="@+id/txt_patient_address"
+        android:text="HMO: Medicard" />
 
 
 </RelativeLayout>

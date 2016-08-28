@@ -3,31 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:background="#0091EA"
-        android:layout_height="56dp"
-
-        android:id="@+id/relativeLayout">
-
-        <TextView
-            android:id="@+id/txt_doctor_fragment_doctor_title"
-            android:layout_width="wrap_content"
-            android:text="Doctors Available"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="8dp"
-            android:textColor="@android:color/white"
-            android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
-
     <android.support.v7.widget.RecyclerView
         android:id ="@+id/lst_doctor_fragment_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
